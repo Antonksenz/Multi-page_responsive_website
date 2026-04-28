@@ -1,0 +1,381 @@
+:root {
+   --primary-color: #3e2723;
+   --accent-color: #d7ccc8; 
+   --text-color: #333;
+   --bg-color: #fafafa;
+}
+
+
+* {
+   box-sizing: border-box; /* враховує padding і border у ширині/висоті */
+   margin: 0;
+   padding: 0;
+}
+
+
+body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   line-height: 1.6;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;/* сторінка мінімум на всю висоту екрану */
+}
+
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 16px 5%;
+   background-color: var(--primary-color);
+   color: #fff;
+   position: sticky;/* Робить елемент "липким" при скролі */
+   top: 0;/* Від якої точки прилипає (0 = верх екрану) */
+   z-index: 100;/* Пріоритет шару (щоб був поверх інших елементів) */
+}
+
+
+.logo {
+   font-size: 24px;
+   font-weight: bold;
+   color: var(--accent-color);
+}
+
+/* ===== СТИЛІ ЛІНІЙ БУРГЕР-МЕНЮ ===== */
+.hamburger {
+   display: none;
+   flex-direction: column;
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 8px;
+}
+
+
+.hamburger span {
+   width: 25px;
+   height: 3px;
+   background-color: #fff;
+   margin: 5px 0;
+   transition: all 0.3s ease;
+   border-radius: 2px;
+}
+
+
+/* ===== АНІМАЦІЯ ПРИ АКТИВНОМУ СТАНІ (коли меню відкрите) ===== */
+
+
+/* Перша лінія */
+.hamburger.active span:nth-child(1) {
+   transform: rotate(45deg) translate(10px, 10px);
+   /*
+   rotate(45deg) — повертає лінію на 45°
+   translate(10px, 10px) — зміщує вправо і вниз
+   в результаті це стає верхньою частиною "Х"
+   */
+}
+
+
+/* Друга (середня) лінія */
+.hamburger.active span:nth-child(2) {
+   opacity: 0;
+   /*
+   робимо її невидимою
+   щоб залишилось тільки дві лінії для "Х"
+   */
+}
+
+
+/* Третя лінія */
+.hamburger.active span:nth-child(3) {
+   transform: rotate(-45deg) translate(10px, -10px);
+   /*
+   rotate(-45deg) — повертає в інший бік
+   translate(10px, -10px) — зміщує вправо і вгору
+   формує нижню частину "Х"
+   */
+}
+
+
+.nav-menu {
+   display: flex;
+   gap: 30px;
+}
+
+
+.nav-menu a {
+   color: #fff;
+   text-decoration: none;
+   font-weight: 500;
+   transition: color 0.3s;
+}
+
+
+.nav-menu a:hover, .nav-menu a.active {
+   color: var(--accent-color);
+}
+
+.parallax {
+   background-image: url('./Img/pexels-haleyve-3968061.jpg');
+   height: 100vh;
+   background-attachment: fixed;/* Фіксує фон відносно вікна браузера */
+   background-size: cover;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+
+.hero-content h1 {
+   font-size: 56px;
+   color: #fff;
+   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+   margin-bottom: 8px;
+}
+
+
+.hero-content p {
+   font-size: 24px;
+   color: #f0f0f0;
+   margin-bottom: 32px;
+   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.btn {
+   padding: 12px 30px;
+   background-color: var(--accent-color);
+   color: var(--primary-color);
+   text-decoration: none;
+   font-weight: bold;
+   border-radius: 4px;
+   transition: background 0.3s;
+   border: none;
+   cursor: pointer;
+}
+
+
+.btn:hover {
+   background-color: #fff;
+}
+
+
+footer {
+   background-color: var(--primary-color);
+   color: #fff;
+   text-align: center;
+   padding: 20px 0;
+  
+}
+
+
+.content-block {
+   max-width: 900px;/* елемент НЕ стане ширшим за 900px */
+   margin: 40px auto;
+   padding: 0 20px;
+   flex: 1;/* Елемент займає весь доступний простір у flex-контейнері */
+}
+
+
+.menu-container {
+   max-width: 1000px;
+   margin: 60px auto;
+   padding: 0 20px;
+   flex: 1;
+}
+
+
+.menu-container h1 {
+   font-size: 40px;
+   color: var(--primary-color);
+   margin-bottom: 50px;
+   text-align: center;
+   font-weight: 700;
+}
+
+
+.menu-section {
+   margin-bottom: 60px;
+}
+
+
+.menu-section h2 {
+   border-bottom: 3px solid var(--primary-color);
+   display: inline-block;
+   margin-bottom: 30px;
+   padding-bottom: 10px;
+   font-size: 29px;
+   font-weight: 700;
+}
+
+.menu-list {
+   list-style: none;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 30px 40px;
+}
+
+.menu-item {
+   display: flex;
+   margin-bottom: 25px;
+   padding: 15px 0;
+   border-bottom: 1px solid #f0f0f0;
+}
+
+
+.dish-name {
+   font-weight: bold;
+   padding-right: 10px;
+   font-size: 19px;
+   color: var(--primary-color);
+}
+
+
+.dots {
+   flex: 1;
+   border-bottom: 2px dotted #ccc;
+   margin: 0 10px;
+   align-self: center;
+}
+
+
+.dish-price {
+   font-weight: bold;
+   padding-left: 10px;
+   color: var(--accent-color);
+   font-size: 18px;
+   min-width: 80px;
+   text-align: right;
+}
+
+@media (max-width: 768px) {
+   .navbar {
+       flex-direction: row;
+       justify-content: space-between;
+       align-items: center;
+   }
+
+
+   .hamburger {
+       display: flex;
+       order: 2;
+   }
+
+
+
+
+   .logo {
+       order: 1;
+   }
+
+
+   .nav-menu {
+       order: 3;
+       position: fixed;
+       left: -100%;
+       top: 60px;
+       flex-direction: column;
+       background-color: var(--primary-color);
+       width: 100%;
+       text-align: center;
+       transition: 0.3s;
+       box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+       padding: 20px 0;
+       gap: 0;
+   }
+
+
+   .nav-menu.active {
+       left: 0;
+   }
+
+
+   .nav-menu a {
+       display: block;
+       padding: 15px 0;
+       transition: background-color 0.3s;
+   }
+
+
+   .nav-menu a:hover {
+       background-color: rgba(215, 204, 200, 0.1);
+   }
+
+
+   .hero-content h1 {
+       font-size: 2.2rem;
+   }
+
+   .menu-container h1 {
+       font-size: 1.8rem;
+       margin-bottom: 30px;
+   }
+
+
+   .menu-section {
+       margin-bottom: 40px;
+   }
+
+
+   .menu-list {
+       grid-template-columns: 1fr;
+       gap: 15px 20px;
+   }
+
+
+   .menu-section h2 {
+       font-size: 1.4rem;
+       margin-bottom: 20px;
+       padding-bottom: 8px;
+   }
+
+
+   .menu-item {
+       flex-direction: column;
+       align-items: flex-start;
+       background: #fff;
+       border: 2px solid #eee;
+       padding: 20px;
+       border-radius: 12px;
+       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+       margin-bottom: 20px;
+       border-bottom: none;
+   }
+
+
+   .dots {
+       display: none;
+   }
+
+
+   .dish-price {
+       align-self: flex-end;
+       background-color: var(--accent-color);
+       padding: 8px 16px;
+       border-radius: 6px;
+       color: #fff;
+       font-size: 1rem;
+       text-align: center;
+       min-width: auto;
+   }
+
+
+   .dish-name {
+       font-size: 1.2rem;
+       margin-bottom: 5px;
+       color: var(--primary-color);
+   }
+  
+   .dish-price {
+       align-self: flex-end;
+       background-color: var(--accent-color);
+       padding: 5px 10px;
+       border-radius: 4px;
+       color: #333;
+   }
+
+
+
+
+}
